@@ -16,7 +16,8 @@ class GoodsItem {
 class GoodsList {
     constructor (el = ".goods-list") {
         this.el = el;
-        this.goods = []
+        this.goods = [];
+        this.totalPrice = 0;
     }
     fetchGoods() {
         this.goods = [
@@ -33,6 +34,54 @@ class GoodsList {
             return acc += goodItem.render();
         }, '');
         document.querySelector(this.el).innerHTML = listHtml;
+    }
+
+    calcPrice () {
+
+        this.fetchGoods();
+
+        this.totalPrice = this.goods.reduce((acc, good) => {
+
+            if (!!good.price) {
+                return acc += parseInt(good.price);
+            } else {
+                return acc;
+            }
+            
+        }, 0);
+
+        console.log(totalPrice);
+
+    }
+
+
+}
+
+class BasketItem {
+    constructor () {
+
+    }
+
+    changeQuantity () {
+
+    }
+}
+
+class Basket {
+    constructor () {
+
+    }
+
+    addItem () {
+
+    }
+
+    removeItem () {
+
+    }
+
+    calcBasket () {
+
     }
 }
 
